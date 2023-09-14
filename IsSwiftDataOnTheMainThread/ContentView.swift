@@ -42,10 +42,10 @@ struct ContentView: View {
         } detail: {
             Text("Select an item")
         }
-        .task {
-            do {
-                try await fetchAllItems()
-            } catch {}
+        .onAppear {
+            Task(priority: .background) {
+                try! await fetchAllItems()
+            }
         }
     }
 

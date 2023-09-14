@@ -33,15 +33,15 @@ actor BackgroundDataManager: ModelActor {
     }
 
     func insert(item: Item) {
-        modelExecutor.modelContext.insert(item)
+        modelContext.insert(item)
     }
 
     func delete(item: Item) {
-        modelExecutor.modelContext.delete(item)
+        modelContext.delete(item)
     }
 
     func getAllItems() throws -> [Item] {
         let descriptor = FetchDescriptor<Item>(sortBy: [.init(\.timestamp, order: .reverse)])
-        return try modelExecutor.modelContext.fetch(descriptor)
+        return try modelContext.fetch(descriptor)
     }
 }
